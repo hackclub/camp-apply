@@ -1,10 +1,10 @@
 import React from 'react'
-import { Icon, OutlineButton } from '@hackclub/design-system'
+import { Container, Icon, OutlineButton } from '@hackclub/design-system'
 import { Title, Lead } from '../components/Content'
-import { Section, theme } from '../components/style'
+import { theme } from '../components/style'
 
 export default () => (
-  <Section align="center" maxWidth={32}>
+  <Container align="center" maxWidth={32} px={3} py={4}>
     <Icon glyph="checkmark" size={96} />
     <Title color="white" mb={2}>
       Submitted!
@@ -36,5 +36,5 @@ export default () => (
         )};
       }
     `}</style>
-  </Section>
+  </Container>
 )
