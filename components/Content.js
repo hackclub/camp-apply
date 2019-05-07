@@ -36,6 +36,13 @@ export const Featline = styled(Heading.h3).attrs({
   letter-spacing: -0.01em;
 `
 
+export const Hint = styled(Text).attrs({
+  color: 'muted',
+  fontSize: 1,
+  mt: -1,
+  mb: 3
+})``
+
 const color = css`
   color: ${({ colors }) => theme.cx(colors[2])};
   @supports (-webkit-background-clip: text) {

@@ -3,7 +3,8 @@ import Router from 'next/router'
 import 'isomorphic-fetch'
 import { Formik } from 'formik'
 import { Field, Submit } from '@hackclub/design-system'
-import { Featline } from './Content'
+import { Featline, Hint } from './Content'
+import * as yup from 'yup'
 
 const SelectOne = ({ text = 'one' }) => (
   <option value="" disabled children={'Select ' + text} />
@@ -28,13 +29,14 @@ const formContent = ({
   return (
     <form onSubmit={handleSubmit}>
       <Featline mt={4}>About you</Featline>
-      <Field {...field('Name')} label="Full name" placeholder="Zach" />
+      <Field {...field('Name')} label="Full name" placeholder="Rose Hacks" />
       <Field
         {...field('Birthday')}
         label="Birthday"
-        placeholder="2001-04-01"
+        placeholder="2001-03-01"
         type="date"
       />
+      <Hint>YYYY-MM-DD format</Hint>
       <Field {...field('School Stage')} label="School stage" type="select">
         <SelectOne />
         <option>Rising Middle Schooler</option>
@@ -77,6 +79,7 @@ const formContent = ({
         label="What’s the coolest project you’ve made/worked on?"
         type="textarea"
       />
+      <Hint>A few sentences is fine.</Hint>
       <Featline mt={4}>Which session?</Featline>
       <Field
         {...field('Sessions (preference 1)')}
@@ -134,14 +137,38 @@ const defaultValues = {
   'Sessions (preference 3)': ''
 }
 
-const submit = async values => {
-  let sessions = [
+const schema = yup.object().shape({
+  Name: yup.string().required('required'),
+  Birthday: yup
+    .string()
+    .required('required')
+    .matches(
+      /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])$/,
+      'please format YYYY-MM-DD'
+    ),
+  'School Stage': yup.string().required('required'),
+  Email: yup
+    .string()
+    .email()
+    .required('required'),
+  Gender: yup.string().required('required'),
+  'Coding Experience': yup.string().required('required'),
+  'Electronics Experience': yup.string().required('required'),
+  'Coolest Project': yup.string().required('required'),
+  'Sessions (preference 1)': yup.string().required('required'),
+  'Sessions (preference 2)': yup.string().required('required'),
+  'Sessions (preference 3)': yup.string().required('required')
+})
+
+const submit = values => {
+  const sessions = [
     values['Sessions (preference 1)'],
     values['Sessions (preference 2)'],
     values['Sessions (preference 3)']
   ]
-  sessions = Array.from(new Set(sessions)) // uniquify
-  delete sessions['Can’t attend other times']
+  const Sessions = Array.from(new Set(sessions)).filter(
+    v => v !== 'Can’t attend other times'
+  )
 
   delete values['Sessions (preference 1)']
   delete values['Sessions (preference 2)']
@@ -150,22 +177,21 @@ const submit = async values => {
   const body = JSON.stringify({
     base: 'appGddDR5Jlh8J0r7',
     table: 'Applications',
-    record: {
-      ...values,
-      Sessions: sessions
-    }
+    record: { ...values, Sessions }
   })
-  const res = await fetch(
-    `https://hooks.zapier.com/hooks/catch/507705/7n18ca`,
-    { method: 'POST', body }
-  )
-  Router.push('/applied')
+
+  const endpoint = 'https://hooks.zapier.com/hooks/catch/507705/7n18ca'
+  fetch(endpoint, { method: 'POST', body }).then(res => {
+    console.log(res)
+    Router.push('/applied')
+  })
 }
 
 export default () => (
   <Formik
     render={formContent}
     initialValues={defaultValues}
+    // validationSchema={schema}
     onSubmit={submit}
   />
 )

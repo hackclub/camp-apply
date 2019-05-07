@@ -31,6 +31,9 @@ export default class extends App {
           label {
             color: ${theme.colors.smoke} !important;
           }
+          label .error {
+            color: ${theme.colors.red};
+          }
           input,
           textarea,
           select {
