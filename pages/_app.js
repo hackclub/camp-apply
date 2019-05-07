@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import App, { Container } from 'next/app'
 import { ThemeProvider } from '@hackclub/design-system'
 import { theme } from '../components/style'
@@ -19,6 +20,9 @@ export default class extends App {
 
     return (
       <Container>
+        <Head>
+          <title>Apply to Hack Camp 2019</title>
+        </Head>
         <style jsx global>{`
           body {
             background-color: ${theme.colors.dark};
