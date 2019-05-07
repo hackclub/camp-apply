@@ -1,0 +1,27 @@
+{
+  "name": "@hackclub/camp-apply",
+  "version": "1.0.0",
+  "description": "Apply to Hack Camp 2019",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "export": "next export",
+    "deploy": "npm run build && npm run export",
+    "start": "next start"
+  },
+  "author": "Lachlan Campbell <lachlan@hackclub.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@hackclub/design-system": "0.0.1-16",
+    "axios": "^0.18.0",
+    "babel-plugin-styled-components": "^1.10.0",
+    "formik": "^1.5.4",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^3.4.9",
+    "yup": "^0.27.0"
+  }
+}
