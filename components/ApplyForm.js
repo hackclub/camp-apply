@@ -29,13 +29,12 @@ const formContent = ({
   return (
     <form onSubmit={handleSubmit}>
       <Featline mt={4}>About you</Featline>
-      <Field {...field('Name')} label="Full name" placeholder="Rose Hacks" />
       <Field
-        {...field('Birthday')}
-        label="Birthday"
-        placeholder="2001-03-01"
-        type="date"
+        {...field('Name')}
+        label="Full name"
+        placeholder="Rose Hackworth"
       />
+      <Field {...field('Birthday')} label="Birthday" placeholder="2001-03-01" />
       <Hint>YYYY-MM-DD format</Hint>
       <Field {...field('School Stage')} label="School stage" type="select">
         <SelectOne />
