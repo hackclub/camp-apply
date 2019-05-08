@@ -26,6 +26,11 @@ const formContent = ({
     onBlur: handleBlur,
     error: touched[name] && errors[name]
   })
+  const sessions = [
+    <option value="Session 1 (July 1)">Session 1 (July 1–5)</option>,
+    <option value="Session 2 (July 15)">Session 2 (July 15–19)</option>,
+    <option value="Session 3 (July 29)">Session 3 (July 29–Aug 2)</option>
+  ]
   return (
     <form onSubmit={handleSubmit}>
       <Featline mt={4}>About you</Featline>
@@ -86,9 +91,7 @@ const formContent = ({
         type="select"
       >
         <SelectOne text="a session" />
-        <option>Session 1 (July 1)</option>
-        <option>Session 2 (July 15)</option>
-        <option>Session 3 (July 29)</option>
+        {sessions}
       </Field>
       <Field
         {...field('Sessions (preference 2)')}
@@ -97,9 +100,7 @@ const formContent = ({
       >
         <SelectOne text="a session" />
         <option>Can’t attend other times</option>
-        <option>Session 1 (July 1)</option>
-        <option>Session 2 (July 15)</option>
-        <option>Session 3 (July 29)</option>
+        {sessions}
       </Field>
       <Field
         {...field('Sessions (preference 3)')}
@@ -108,9 +109,7 @@ const formContent = ({
       >
         <SelectOne text="a session" />
         <option>Can’t attend other times</option>
-        <option>Session 1 (July 1)</option>
-        <option>Session 2 (July 15)</option>
-        <option>Session 3 (July 29)</option>
+        {sessions}
       </Field>
       <Submit
         width={1}
