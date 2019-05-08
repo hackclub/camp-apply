@@ -13,7 +13,8 @@ export default () => (
       We’ll let you know your status within the next 10 days.
     </Lead>
     <OutlineButton
-      bg="snow"
+      bg={theme.colors.snow}
+      color={theme.colors.green}
       mt={[4, 5]}
       chevronRight
       target="_blank"
