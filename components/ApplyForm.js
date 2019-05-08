@@ -190,7 +190,7 @@ export default () => (
   <Formik
     render={formContent}
     initialValues={defaultValues}
-    // validationSchema={schema}
+    validationSchema={schema}
     onSubmit={submit}
   />
 )
