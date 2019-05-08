@@ -191,6 +191,7 @@ export default () => (
     render={formContent}
     initialValues={defaultValues}
     validationSchema={schema}
+    validateOnBlur
     onSubmit={submit}
   />
 )
