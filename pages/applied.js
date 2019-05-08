@@ -20,7 +20,7 @@ export default () => (
       target="_blank"
       href="https://hackclub.com/community/"
     >
-      Join our chatroom
+      Join our community
     </OutlineButton>
     <style jsx global>{`
       #__next {
