@@ -111,6 +111,11 @@ const formContent = ({
         <option>Can’t attend other times</option>
         {sessions}
       </Field>
+      <Field
+        {...field('Promo Code')}
+        label="Promo Code"
+        placeholder=""
+      />
       <Submit
         width={1}
         mt={4}
@@ -132,7 +137,8 @@ const defaultValues = {
   'Coolest Project': '',
   'Sessions (preference 1)': '',
   'Sessions (preference 2)': '',
-  'Sessions (preference 3)': ''
+  'Sessions (preference 3)': '',
+  'Promo Code': ''
 }
 
 const schema = yup.object().shape({
@@ -155,7 +161,8 @@ const schema = yup.object().shape({
   'Coolest Project': yup.string().required('required'),
   'Sessions (preference 1)': yup.string().required('required'),
   'Sessions (preference 2)': yup.string().required('required'),
-  'Sessions (preference 3)': yup.string().required('required')
+  'Sessions (preference 3)': yup.string().required('required'),
+  'Promo Code': yup.string(),
 })
 
 const submit = values => {
