@@ -41,6 +41,11 @@ const formContent = ({
       />
       <Field {...field('Birthday')} label="Birthday" placeholder="2001-03-01" />
       <Hint>YYYY-MM-DD format</Hint>
+      <Field
+        {...field('School Name')}
+        label="School name"
+        placeholder="Hacker High"
+      />
       <Field {...field('School Stage')} label="School stage" type="select">
         <SelectOne />
         <option>Rising Middle Schooler</option>
@@ -115,7 +120,6 @@ const formContent = ({
         {...field('Promo Code')}
         label="Promo Code"
         placeholder=""
-      />
       <Submit
         width={1}
         mt={4}
@@ -129,6 +133,7 @@ const formContent = ({
 const defaultValues = {
   Name: '',
   Birthday: '',
+  'School Name': '',
   'School Stage': '',
   Email: '',
   Gender: '',
@@ -150,6 +155,7 @@ const schema = yup.object().shape({
       /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])$/,
       'please format YYYY-MM-DD'
     ),
+  'School Name': yup.string().required('required'),
   'School Stage': yup.string().required('required'),
   Email: yup
     .string()
