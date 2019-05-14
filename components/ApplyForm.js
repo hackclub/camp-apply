@@ -120,6 +120,7 @@ const formContent = ({
         {...field('Promo Code')}
         label="Promo Code"
         placeholder=""
+      />
       <Submit
         width={1}
         mt={4}
